@@ -1,2 +1,5 @@
-# Findagrave_Script
-Findagrave
+requests
+beautifulsoup4
+pandas
+js2py
+openpyxl
