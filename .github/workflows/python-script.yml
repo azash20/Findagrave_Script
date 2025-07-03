@@ -1,0 +1,31 @@
+name: Run FindAGrave Scraper
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.10
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run scraper script
+      run: python scrape_memorial.py
+
+    - name: Upload output Excel
+      uses: actions/upload-artifact@v3
+      with:
+        name: memorial-excel
+        path: archibald_mathies_memorial.xlsx
